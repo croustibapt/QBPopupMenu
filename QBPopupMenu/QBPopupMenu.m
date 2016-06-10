@@ -70,6 +70,8 @@ static const NSTimeInterval kQBPopupMenuAnimationDuration = 0.2;
         
         self.color = [[UIColor blackColor] colorWithAlphaComponent:0.8];
         self.highlightedColor = [[UIColor darkGrayColor] colorWithAlphaComponent:0.8];
+        
+        self.drawSeparator = YES;
     }
     
     return self;
@@ -808,9 +810,12 @@ static const NSTimeInterval kQBPopupMenuAnimationDuration = 0.2;
     } CGContextRestoreGState(context);
     
     // Separator
-    if (direction == QBPopupMenuArrowDirectionDown || direction == QBPopupMenuArrowDirectionUp) {
-        for (QBPopupMenuItemView *itemView in self.visibleItemViews) {
-            [self drawSeparatorInRect:CGRectMake(itemView.frame.origin.x + itemView.frame.size.width - 1, rect.origin.y, 1, rect.size.height)];
+    if (self.drawSeparator)
+    {
+        if (direction == QBPopupMenuArrowDirectionDown || direction == QBPopupMenuArrowDirectionUp) {
+            for (QBPopupMenuItemView *itemView in self.visibleItemViews) {
+                [self drawSeparatorInRect:CGRectMake(itemView.frame.origin.x + itemView.frame.size.width - 1, rect.origin.y, 1, rect.size.height)];
+            }
         }
     }
 }
@@ -866,8 +871,11 @@ static const NSTimeInterval kQBPopupMenuAnimationDuration = 0.2;
     } CGContextRestoreGState(context);
     
     // Separator
-    if (!lastItem) {
-        [self drawSeparatorInRect:CGRectMake(rect.origin.x + rect.size.width - 1, rect.origin.y, 1, rect.size.height)];
+    if (self.drawSeparator)
+    {
+        if (!lastItem) {
+            [self drawSeparatorInRect:CGRectMake(rect.origin.x + rect.size.width - 1, rect.origin.y, 1, rect.size.height)];
+        }
     }
 }
 

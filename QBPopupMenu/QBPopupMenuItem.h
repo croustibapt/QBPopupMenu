@@ -14,7 +14,17 @@
 @property (nonatomic, assign, readonly) SEL action;
 
 @property (nonatomic, copy, readonly) NSString *title;
-@property (nonatomic, copy, readonly) UIImage *image;
+@property (nonatomic, copy, readwrite) UIImage *image;
+
+@property (nonatomic, readwrite) BOOL dismissAfterPerformAction;
+
++ (instancetype)itemWithTitle:(NSString *)title target:(id)target action:(SEL)action dismissAfterPerformAction:(BOOL)dismissAfterPerformAction;
++ (instancetype)itemWithImage:(UIImage *)image target:(id)target action:(SEL)action dismissAfterPerformAction:(BOOL)dismissAfterPerformAction;
++ (instancetype)itemWithTitle:(NSString *)title image:(UIImage *)image target:(id)target action:(SEL)action dismissAfterPerformAction:(BOOL)dismissAfterPerformAction;
+
+- (instancetype)initWithTitle:(NSString *)title target:(id)target action:(SEL)action dismissAfterPerformAction:(BOOL)dismissAfterPerformAction;
+- (instancetype)initWithImage:(UIImage *)image target:(id)target action:(SEL)action dismissAfterPerformAction:(BOOL)dismissAfterPerformAction;
+- (instancetype)initWithTitle:(NSString *)title image:(UIImage *)image target:(id)target action:(SEL)action dismissAfterPerformAction:(BOOL)dismissAfterPerformAction;
 
 + (instancetype)itemWithTitle:(NSString *)title target:(id)target action:(SEL)action;
 + (instancetype)itemWithImage:(UIImage *)image target:(id)target action:(SEL)action;

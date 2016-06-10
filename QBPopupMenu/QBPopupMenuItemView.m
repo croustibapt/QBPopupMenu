@@ -100,7 +100,9 @@
     }
     
     // Close popup menu
-    [self.popupMenu dismissAnimated:YES];
+    if (self.item.dismissAfterPerformAction) {
+        [self.popupMenu dismissAnimated:YES];
+    }
 }
 
 

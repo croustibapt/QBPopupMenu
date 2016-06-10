@@ -48,6 +48,8 @@ typedef NS_ENUM(NSUInteger, QBPopupMenuArrowDirection) {
 @property (nonatomic, strong) UIColor *color;
 @property (nonatomic, strong) UIColor *highlightedColor;
 
+@property (nonatomic, assign) BOOL drawSeparator;
+
 + (instancetype)popupMenuWithItems:(NSArray *)items;
 - (instancetype)initWithItems:(NSArray *)items;
 
